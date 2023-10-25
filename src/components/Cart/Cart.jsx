@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Typography, Button} from '@mui/material'
 import Grid from "@mui/material/Grid";
 import useStyles from './styles';
+import Cartitem from './Cartitem/Cartitem';
 
 const Cart = ({cart}) => {
     const classes = useStyles();
@@ -16,9 +17,7 @@ const Cart = ({cart}) => {
             <Grid container spacing={3}>
                 {cart.line_items.map((item)=>(
                     <Grid item xs={12} sm={4} key={item.id}>
-                        <div>
-                            {item.name}
-                        </div>
+                        <Cartitem item={item}/>
                     </Grid>
                 ))}
             </Grid>
@@ -37,7 +36,7 @@ const Cart = ({cart}) => {
   return (
     <Container>
         <div className={classes.toolbar}/>
-        <Typography className={classes.title} variant='h3'>Your Shopping Cart</Typography>
+        <Typography className={classes.title} variant='h3' gutterBottom>Your Shopping Cart</Typography>
         { isEmpty ? <EmptyCart /> : <FilledCart/>}
     </Container>
   )
